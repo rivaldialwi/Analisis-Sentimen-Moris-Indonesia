@@ -30,7 +30,7 @@ def show_dialog(user_data):
 
     @st.experimental_dialog("Edit User Data")
     def dialog():
-        st.write("Edit your details below:")
+        st.write("Edit Data Anda Di Bawah Ini:")
         new_email = st.text_input("New Email", value=st.session_state['edit_email'])
         new_username = st.text_input("New Username", value=st.session_state['edit_username'], disabled=True)
         new_password = st.text_input("New Password", value=st.session_state['edit_password'], type="password")
@@ -56,20 +56,20 @@ def run():
 
     if 'logged_in' in st.session_state and st.session_state['logged_in']:
         if 'username' not in st.session_state:
-            st.error("No user data found. Please log in again.")
+            st.error("Data pengguna tidak di temukan")
             return
 
         username = st.text_input("Username", value=st.session_state['username'], disabled=True)
         password = st.text_input("Password", value=st.session_state['password'], disabled=True, type="password")
 
-        if st.button("Load Data"):
+        if st.button("Edit Data"):
             user_data = get_user_data(username, st.session_state['password'])
             if user_data:
                 show_dialog(user_data)
             else:
-                st.error("Failed to load user data.")
+                st.error("Edit data gagal")
     else:
-        st.error("You need to log in first")
+        st.error("Anda harus login terlebih dahulu")
 
 if __name__ == "__main__":
     run()
