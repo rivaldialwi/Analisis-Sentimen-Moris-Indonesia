@@ -21,7 +21,7 @@ def login():
     
     if st.button("Login"):
         if not username or not password:
-            st.warning("Tolong masukan username dan password terlebih dahulu")
+            st.error("Tolong masukan username dan password terlebih dahulu")
         else:
             if validate_login(username, password, 'admin'):
                 st.session_state['logged_in'] = True
